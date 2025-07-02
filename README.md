@@ -52,8 +52,8 @@ book_manager/
 1. **Clone the project**
 
 ```bash
-git clone https://github.com/your-username/book-manager-api.git
-cd book-manager-api
+git clone https://github.com/peligro19/Book-Manager-API.git
+cd Book-Manager-API
 ```
 
 2. **Install dependencies**
