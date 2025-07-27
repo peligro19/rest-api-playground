@@ -1,0 +1,5 @@
+fastapi
+sqlmodel
+uvicorn
+python-dotenv
+bcrypt

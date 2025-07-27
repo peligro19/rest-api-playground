@@ -1,0 +1,91 @@
+PS S:\1. Job Switch\rest-api-playground\blogify-api> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['S:\\1. Job Switch\\rest-api-playground\\blogify-api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [108128] using StatReload
+INFO:     Started server process [109672]
+INFO:     Waiting for application startup.
+2025-07-27 22:24:57,516 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:24:57,517 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("blog")
+2025-07-27 22:24:57,517 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:24:57,521 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("blog")
+2025-07-27 22:24:57,521 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:24:57,521 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2025-07-27 22:24:57,521 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:24:57,522 INFO sqlalchemy.engine.Engine PRAGMA temp.table_info("user")
+2025-07-27 22:24:57,522 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:24:57,523 INFO sqlalchemy.engine.Engine 
+CREATE TABLE user (
+        id INTEGER NOT NULL,
+        username VARCHAR NOT NULL,
+        email VARCHAR NOT NULL,
+        password VARCHAR NOT NULL,
+        PRIMARY KEY (id)
+)
+
+
+2025-07-27 22:24:57,524 INFO sqlalchemy.engine.Engine [no key 0.00141s] ()
+2025-07-27 22:24:57,526 INFO sqlalchemy.engine.Engine
+CREATE TABLE blog (
+        id INTEGER NOT NULL,
+        title VARCHAR NOT NULL,
+        content VARCHAR NOT NULL,
+        author_id INTEGER NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY(author_id) REFERENCES user (id)
+)
+
+
+2025-07-27 22:24:57,527 INFO sqlalchemy.engine.Engine [no key 0.00028s] ()
+2025-07-27 22:24:57,531 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Application startup complete.
+
+INFO:     127.0.0.1:56049 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56049 - "GET /openapi.json HTTP/1.1" 200 OK
+
+
+INFO:     Waiting for application startup.
+2025-07-27 22:41:21,479 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:41:21,479 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("blog")
+2025-07-27 22:41:21,479 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:41:21,481 INFO sqlalchemy.engine.Engine PRAGMA main.table_info("user")
+2025-07-27 22:41:21,481 INFO sqlalchemy.engine.Engine [raw sql] ()
+2025-07-27 22:41:21,482 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Application startup complete.
+2025-07-27 22:41:26,361 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:41:26,363 INFO sqlalchemy.engine.Engine INSERT INTO user (username, email, password) VALUES (?, ?, ?)
+2025-07-27 22:41:26,364 INFO sqlalchemy.engine.Engine [generated in 0.00064s] ('skumar05', 'singhsumit8679207176@gmail.com', 'Sumit@123')
+2025-07-27 22:41:26,366 INFO sqlalchemy.engine.Engine COMMIT
+2025-07-27 22:41:26,369 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:41:26,372 INFO sqlalchemy.engine.Engine SELECT user.id, user.username, user.email, user.password
+FROM user
+WHERE user.id = ?
+2025-07-27 22:41:26,373 INFO sqlalchemy.engine.Engine [generated in 0.00061s] (1,)
+2025-07-27 22:41:26,377 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:56486 - "POST /users/ HTTP/1.1" 200 OK
+
+
+2025-07-27 22:42:15,924 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:42:15,927 INFO sqlalchemy.engine.Engine INSERT INTO blog (title, content, author_id) VALUES (?, ?, ?)
+2025-07-27 22:42:15,927 INFO sqlalchemy.engine.Engine [generated in 0.00066s] ('Blog-1', 'My first blog', 1)
+2025-07-27 22:42:15,930 INFO sqlalchemy.engine.Engine COMMIT
+2025-07-27 22:42:15,936 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:42:15,939 INFO sqlalchemy.engine.Engine SELECT blog.id, blog.title, blog.content, blog.author_id
+FROM blog
+WHERE blog.id = ?
+2025-07-27 22:42:15,943 INFO sqlalchemy.engine.Engine [generated in 0.00392s] (1,)
+2025-07-27 22:42:15,950 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:56496 - "POST /blogs/ HTTP/1.1" 200 OK
+
+
+2025-07-27 22:42:51,354 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 22:42:51,358 INFO sqlalchemy.engine.Engine SELECT user.id, user.username, user.email, user.password 
+FROM user
+WHERE user.id = ?
+2025-07-27 22:42:51,359 INFO sqlalchemy.engine.Engine [generated in 0.00067s] (1,)
+2025-07-27 22:42:51,362 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:56500 - "GET /users/1 HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [97104]
+INFO:     Stopping reloader process [85604]
