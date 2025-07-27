@@ -5,6 +5,7 @@ class TaskCreate(BaseModel):
     title: str
     description: str
 
+
 class TaskRead(BaseModel):
     id: int
     title: str
@@ -13,6 +14,7 @@ class TaskRead(BaseModel):
 
     class Config:
         orm_mode = True
+
 
 class TaskUpdate(BaseModel):
     title: str

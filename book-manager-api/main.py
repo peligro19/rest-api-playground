@@ -33,6 +33,7 @@ def read_book(book_id: int):
 def read_all_books():
     return BookCRUD.get_all_books() 
 
+
 # Update Book Details by ID
 @app.put("/books/{book_id}")
 def update(book_id: int, book: BookUpdate):
@@ -49,4 +50,3 @@ def delete(book_id: int):
     if not deleted:
         raise HTTPException(status_code=404, detail="Book not found.")
     return {"message": "Book deleted successfully."}
-

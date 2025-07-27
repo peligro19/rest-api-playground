@@ -1,18 +1,19 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-
-from .routes import tasks
-from .models import SQLModel
-from .database import engine
+from app.routes import tasks
+from app.database import create_db_and_tables
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup: Create tables
-    SQLModel.metadata.create_all(engine)
+    # Startup logic
+    create_db_and_tables()
     yield
-    # Shutdown: (Optional cleanup code here)
+    # Shutdown logic (if needed)
 
-app = FastAPI(title="📝 Task Manager API", lifespan=lifespan)
+app = FastAPI(
+    title="📝 Task Manager API",
+    lifespan=lifespan
+)
 
-app.include_router(tasks.router)
+app.include_router(tasks.router) 

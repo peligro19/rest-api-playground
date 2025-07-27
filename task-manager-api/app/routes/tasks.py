@@ -7,6 +7,7 @@ from .. import crud
 
 router = APIRouter(prefix="/tasks", tags=["Tasks"])
 
+
 @router.post("/", response_model=Task)
 def create(task: TaskCreate, session: Session = Depends(get_session)):
     task_obj = Task(**task.model_dump())
