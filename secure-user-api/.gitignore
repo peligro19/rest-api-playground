@@ -1,0 +1,19 @@
+# Python virtual environment
+venv/
+
+# dotenv file
+.env
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+
+# VSCode config (optional)
+.vscode/
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
