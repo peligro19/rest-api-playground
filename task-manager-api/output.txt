@@ -1,0 +1,56 @@
+PS S:\1. Job Switch\rest-api-playground\task-manager-api> uvicorn app.main:app --reload
+INFO:     Will watch for changes in these directories: ['S:\\1. Job Switch\\rest-api-playground\\task-manager-api']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [70156] using StatReload
+C:\Users\pooja\Lib\site-packages\pydantic\_internal\_config.py:373: UserWarning: Valid config keys have changed in V2:
+* 'orm_mode' has been renamed to 'from_attributes'
+  warnings.warn(message, UserWarning)
+INFO:     Started server process [97088]
+INFO:     Waiting for application startup.
+2025-07-27 17:59:46,282 INFO sqlalchemy.engine.Engine SELECT DATABASE()
+2025-07-27 17:59:46,283 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-07-27 17:59:46,286 INFO sqlalchemy.engine.Engine SELECT @@sql_mode
+2025-07-27 17:59:46,286 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-07-27 17:59:46,287 INFO sqlalchemy.engine.Engine SELECT @@lower_case_table_names
+2025-07-27 17:59:46,287 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-07-27 17:59:46,290 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 17:59:46,290 INFO sqlalchemy.engine.Engine DESCRIBE `task_db`.`task`
+2025-07-27 17:59:46,290 INFO sqlalchemy.engine.Engine [raw sql] {}
+2025-07-27 17:59:46,305 INFO sqlalchemy.engine.Engine
+CREATE TABLE task (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+        title VARCHAR(255) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        completed BOOL NOT NULL,
+        PRIMARY KEY (id)
+)
+
+
+2025-07-27 17:59:46,306 INFO sqlalchemy.engine.Engine [no key 0.00098s] {}
+2025-07-27 17:59:46,368 INFO sqlalchemy.engine.Engine COMMIT
+INFO:     Application startup complete.
+
+
+INFO:     127.0.0.1:53459 - "GET /tasks/ HTTP/1.1" 200 OK
+2025-07-27 18:28:17,761 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 18:28:17,802 INFO sqlalchemy.engine.Engine INSERT INTO task (title, description, completed) VALUES (%(title)s, %(description)s, %(completed)s)
+2025-07-27 18:28:17,820 INFO sqlalchemy.engine.Engine [generated in 0.02351s] {'title': 'Task-1', 'description': 'I am Task 1', 'completed': 0}
+2025-07-27 18:28:17,845 INFO sqlalchemy.engine.Engine COMMIT
+2025-07-27 18:28:17,855 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+2025-07-27 18:28:17,862 INFO sqlalchemy.engine.Engine SELECT task.id, task.title, task.description, task.completed 
+FROM task
+WHERE task.id = %(pk_1)s
+2025-07-27 18:28:17,864 INFO sqlalchemy.engine.Engine [generated in 0.00333s] {'pk_1': 1}
+2025-07-27 18:28:17,873 INFO sqlalchemy.engine.Engine ROLLBACK
+INFO:     127.0.0.1:53477 - "POST /tasks/ HTTP/1.1" 200 OK
+WARNING:  StatReload detected changes in 'app\routes\tasks.py'. Reloading...
+ INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [101028]
+WARNING:  StatReload detected changes in 'app\routes\tasks.py'. Reloading...
+
+
+
+
+
