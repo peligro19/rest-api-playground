@@ -2,6 +2,8 @@
 
 A blog management API built using FastAPI, SQLModel, and JWT Auth.
 
+![alt text](image.png)
+
 ## Features
 
 - 🧾 User registration
